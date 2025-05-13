@@ -469,3 +469,19 @@ iframe {
     font-size: 5rem;
   }
 }
+#scrollBarContainer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  background-color: #f0e7db;
+  z-index: 9999;
+}
+
+#scrollBar {
+  height: 100%;
+  width: 0%;
+  background-color: #b08968;
+  transition: width 0.2s ease-out;
+}

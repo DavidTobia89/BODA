@@ -12,7 +12,6 @@
   --color-text: #8e7050;
   --color-text-dark: #4b3b2a;
   --color-accent: #ba9369;
-  --color-accent-muted: #A1887F;
   --color-button: #7b4c20;
   --color-button-hover: #5f3615;
   --color-white: #ffffff;
@@ -258,7 +257,7 @@ iframe {
 
 /* --- Botón individual --- */
 .rsvp-button {
-  background-color: var(--color-accent-muted);
+  background-color: var(--color-button);
   color: var(--color-white);
   border-radius: 20px;
   text-decoration: none;
@@ -276,7 +275,7 @@ iframe {
 }
 
 .rsvp-button:hover {
-  background-color: #8D6E63; /* Un poco más oscuro que var(--color-accent-muted) */
+  background-color: var(--color-button-hover);
 }
 
 .whatsapp-link span {

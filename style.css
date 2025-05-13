@@ -352,3 +352,120 @@ iframe {
     margin-left: 15px; /* Espacio si está al lado del botón */
   }
 }
+/* ... (tu CSS existente) ... */
+
+@media (max-width: 768px) {
+  body {
+    padding-top: 0; /* Ajusta el padding del body si es necesario */
+  }
+
+  .pantalla {
+    padding: 1rem; /* Evita que el contenido toque los bordes en móvil */
+  }
+
+  .cta-text {
+    font-size: 1em; /* Ajusta el tamaño del texto CTA */
+    padding: 0.8em 1.2em;
+    margin-bottom: 1em;
+  }
+
+  .sobre {
+    width: 70%; /* Aumenta el ancho en pantallas pequeñas */
+  }
+
+  .seccion {
+    padding: 1.5rem; /* Reduce el padding en secciones */
+    justify-content: center; /* Centra el contenido verticalmente */
+  }
+
+  h2 {
+    font-size: 2.2rem; /* Reduce el tamaño de los encabezados */
+  }
+
+  .nombres {
+    font-size: 3.2rem;
+  }
+
+  .fecha {
+    font-size: 1.6em;
+  }
+
+  iframe {
+    height: 150px; /* Reduce la altura de los mapas */
+  }
+
+  .cuenta-container {
+    flex-direction: column; /* Apila el IBAN y el botón */
+    align-items: center; /* Centra los elementos */
+    gap: 0.8rem; /* Reduce el espacio entre elementos */
+  }
+
+  .cuenta {
+    font-size: 1.2rem; /* Reduce el tamaño del IBAN */
+    padding: 0.8rem;
+  }
+
+  .boton, .copiar-btn {
+    padding: 0.6rem 1rem; /* Reduce el padding de los botones */
+    font-size: 0.9rem;
+  }
+
+  .countdown-circle {
+    gap: 0.5rem; /* Reduce el espacio entre los círculos */
+    flex-wrap: wrap; /* Permite que los círculos se envuelvan */
+  }
+
+  .circle {
+    width: 70px; /* Reduce el tamaño de los círculos */
+    height: 70px;
+    margin: 0.5rem;
+  }
+
+  .circle span {
+    font-size: 1.5rem;
+  }
+
+  .circle small {
+    font-size: 0.7rem;
+  }
+
+  .rsvp-buttons {
+    flex-direction: column; /* Apila los botones de WhatsApp */
+    align-items: center;
+    gap: 0.8rem;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  /* Estilos específicos para tablets */
+  .seccion {
+    padding: 2rem;
+  }
+
+  h2 {
+    font-size: 2.8rem;
+  }
+
+  .nombres {
+    font-size: 4rem;
+  }
+
+  iframe {
+    height: 250px;
+  }
+}
+
+/* Estilos para pantallas más anchas (desktops) - Opcional, para refinar en pantallas grandes */
+@media (min-width: 1025px) {
+  .seccion {
+    padding: 3rem;
+  }
+
+  h2 {
+    font-size: 3rem;
+  }
+
+  .nombres {
+    font-size: 5rem;
+  }
+}

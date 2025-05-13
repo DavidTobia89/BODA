@@ -9,12 +9,17 @@
 
   <!-- Cargar fuentes personalizadas -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
     href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Lato:wght@300;400;700&family=Montserrat:wght@300;400;700&display=swap"
     rel="stylesheet">
 
   <!-- Íconos Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <!-- Favicon (ejemplo, reemplaza con tu imagen) -->
+  <link rel="icon" href="images/favicon.png" type="image/png">
+
 
   <!-- Tu hoja de estilos -->
   <link rel="stylesheet" href="style.css" />
@@ -25,10 +30,10 @@
 
   <div id="pantalla-inicial" class="pantalla">
     <div class="cta-text">Haz clic para abrir tu invitación ✉️</div>
-    <img id="sobre" class="sobre" src="images/sobre.jpeg" alt="Sobre de invitación" />
+    <img id="sobre" class="sobre" src="images/sobre.jpeg" alt="Sobre de invitación" tabindex="0" role="button" aria-label="Abrir invitación"/>
   </div>
 
-  <main id="contenido-principal" class="oculto">
+  <main id="contenido-principal">
     <section class="seccion reveal">
       <h1 class="nombres">David & Mónica </h1>
       <h2 class="titulo "> ¡Nos casamos!</h2>
@@ -50,36 +55,36 @@
       <div>
         <a href="https://www.google.com/maps?q=Calle+Fern%C3%A1n+Gonz%C3%A1lez,+72,+09003+Burgos" target="_blank"
           class="boton">
-          Ver ubicación
+          <i class="fas fa-map-marker-alt"></i> Ver ubicación
         </a>
         <a href="https://www.abbahoteles.com/es/destinos/abba-burgos-hotel/hotel.html" target="_blank"
-          class="boton">Página del hotel</a>
+          class="boton">
+          <i class="fas fa-hotel"></i> Página del hotel
+        </a>
       </div>
     </section>
     <section class="seccion reveal">
       <h2>📋 Formulario de confirmación</h2>
       <p>Por favor, completa el siguiente formulario para ayudarnos a organizar este día tan especial:</p>
       <a class="boton" href="https://docs.google.com/forms/u/0/d/1TEZxsz0ZrALX4ZRESQOHn513-eJsIIFBOOM8Uo638jg/edit"
-        target="_blank">Confirmar asistencia</a>
+        target="_blank">
+        <i class="fas fa-check-circle"></i> Confirmar asistencia
+      </a>
     </section>
-
-
 
     <section class="seccion reveal">
       <h2>🎉 Fiestas en Burgos</h2>
-      <p>La ciudad estará en fiestas, así que podéis aprovechar para alargar la celebración</p>
+      <p>La ciudad estará en fiestas, así que podéis aprovechar para alargar la celebración.</p>
       <p>Si te apetece seguir bailando, hay conciertos en la Plaza Santa María (Plaza de la catedral) y en la Plaza
         Santa Teresa (al lado del Museo de la Evolución).</p>
-
       <p>Si te has quedado con hambre, date una vuelta por la calle de los Herreros y pídete un “cojonudo” o una
         “cojonuda”.</p>
     </section>
+
     <section class="seccion reveal">
       <h2>☎️ Contacto</h2>
       <p>🌿 Este día lo estamos preparando con mucho cariño.</p>
       <p>¿Quieres compartirnos algo? Pulsa el botón y cuéntanos. </p>
-
-
       <div class="rsvp-buttons">
         <a href="https://wa.me/34687254780?text=Hola,%20tengo%20la%20siguiente%20duda:" target="_blank"
           class="rsvp-button">
@@ -94,11 +99,16 @@
 
     <section class="seccion reveal">
       <h2>🎁 Regalo</h2>
-      <p>Estar juntos ese dia para nosotros es lo más importante, pero para el que pueda y quiera, os dejamos nuestro
+      <p>Estar juntos ese día para nosotros es lo más importante, pero para el que pueda y quiera, os dejamos nuestro
         número de cuenta:</p>
-      <div class="cuenta">ES12 3456 7890 1234 5678 9012</div>
+      <div class="cuenta-container">
+        <span id="ibanText" class="cuenta">ES1234567890123456789012</span>
+        <button class="boton copiar-btn" onclick="copiarIBAN()">
+          <i class="fas fa-copy"></i> Copiar
+        </button>
+      </div>
+      <span id="copiadoMensaje" class="copiado-mensaje">¡IBAN Copiado!</span>
     </section>
-
 
     <section class="seccion reveal">
       <h2>⏳ Faltan</h2>
@@ -109,12 +119,9 @@
         <div class="circle"><span id="seconds">00</span><small>Seg</small></div>
       </div>
       <h3><em>👰‍♀️ ¡OS ESPERAMOS! 🤵‍♂️</em></h3>
-
     </section>
-
   </main>
 
   <script src="script.js"></script>
 </body>
-
 </html>

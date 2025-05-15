@@ -73,6 +73,10 @@ p {
   margin: 16px;
  
 }
+a {
+  -webkit-text-decoration-skip: none;
+  text-decoration-skip-ink: none;
+}
 
 .pantalla {
   display: flex;
@@ -475,18 +479,18 @@ iframe {
   max-width: 600px;
   margin: 0 auto;
   text-align: center;
-    text-decoration: none;
+   
 }
 
 #aparcamiento li {
   margin-bottom: 15px;
-    text-decoration: none;
+
 }
 
 #aparcamiento a {
  text-align: start;
   color: var(--color-text);
-  text-decoration: none;
+
 }
 .map-icon {
   display: inline-block;

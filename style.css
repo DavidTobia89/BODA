@@ -475,11 +475,12 @@ iframe {
   max-width: 600px;
   margin: 0 auto;
   text-align: center;
+    text-decoration: none;
 }
 
 #aparcamiento li {
   margin-bottom: 15px;
-  
+    text-decoration: none;
 }
 
 #aparcamiento a {

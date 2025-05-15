@@ -181,10 +181,13 @@ main.visible-content {
 }
 
 @media (max-width: 780px) {
+
+
   .seccion {
     justify-content: center; /* Centrar en pantallas más pequeñas */
     padding-top: calc(var(--scrollbar-height) + 1rem); /* Espacio para la barra de scroll */
     padding-bottom: 1rem;
+    margin: 8px;
   }
 }
 
@@ -517,8 +520,7 @@ iframe {
 
 #aparcamiento li a {
   text-decoration: none; /* Quitar subrayado de enlaces */
-  display: flex; /* Para alinear icono y texto */
-  align-items: center;
+
   transition: color 0.2s ease;
 }
 #aparcamiento li a:hover {

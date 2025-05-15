@@ -174,7 +174,7 @@ main.visible-content {
     url("images/fondo.png") type("image/png")
   );
   */
-  background-size: cover; /* Cambiado a cover para mejor ajuste visual */
+  background-size: 100%auto; /* Cambiado a cover para mejor ajuste visual */
   background-repeat: no-repeat;
   background-position: center bottom; /* Centrar el fondo */
   background-color: var(--color-background);

@@ -532,14 +532,14 @@ iframe {
 
 
 .map-icon {
-  display: inline-block;
+  
   margin-right: 10px; /* Espacio entre el icono y el texto */
   font-size: 1.2em; /* Tamaño del emoji/icono */
 }
 .map-pin-icon {
   margin-left: 8px; /* Espacio antes del pin */
   font-size: 1em;
-  display: inline-block;
+  s
   transition: transform 0.2s ease;
 }
 .map-pin-icon-text { /* Para el pin en el párrafo introductorio */

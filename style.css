@@ -544,3 +544,21 @@ iframe {
 .map-pin-icon-text { /* Para el pin en el párrafo introductorio */
   font-size: 1em;
 }
+.scroll-icon {
+  font-size: 2rem;
+  color: var(--color-button);
+  display: block;
+  text-align: center;
+  margin-top: 50px;
+  animation: moveDown 1.5s infinite;
+  cursor: pointer;
+}
+
+@keyframes moveDown {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(10px);
+  }
+}

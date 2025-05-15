@@ -7,7 +7,7 @@
   <meta name="format-detection" content="telephone=no">
   <title>Boda de David y Mónica</title>
 
-  <!-- Cargar fuentes personalizadas -->
+  <!-- Cargar fuentes personalizadas con display=swap para mejor rendimiento percibido -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
@@ -17,7 +17,7 @@
   <!-- Íconos Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-  <!-- Favicon (ejemplo, reemplaza con tu imagen) -->
+  <!-- Favicon (ejemplo, reemplaza con tu imagen optimizada) -->
   <link rel="icon" href="images/favicon.png" type="image/png">
 
 
@@ -28,11 +28,19 @@
 
 <body>
 
+  <!-- Barra de progreso del scroll -->
+  <div id="scrollBarContainer">
+    <div id="scrollBar"></div>
+  </div>
 
   <div id="pantalla-inicial" class="pantalla">
-    <div class="cta-text">Haz clic en el sobre para abrir tu invitación ✉️</div>
-    <img id="sobre" class="sobre" src="images/sobre.jpeg" alt="Sobre de invitación" tabindex="0" role="button"
-      aria-label="Abrir invitación" />
+    <div class="cta-text">Haz clic en el sobre para abrir tu invitación <span role="img" aria-label="emoji de sobre">✉️</span></div>
+    <!-- Uso de <picture> para ofrecer WebP con fallback -->
+    <picture>
+      <source srcset="images/sobre.webp" type="image/webp">
+      <img id="sobre" class="sobre" src="images/sobre.jpeg" alt="Sobre de invitación" tabindex="0" role="button"
+        aria-label="Abrir invitación" />
+    </picture>
   </div>
 
   <main id="contenido-principal">
@@ -46,8 +54,8 @@
     <section class="seccion reveal">
       <h2><i class="fas fa-church"> </i> Ceremonia</h2>
       <p>El lugar de la ceremonia será la <strong>Iglesia San Nicolás de Bari</strong> en Burgos a las 12:00 h.</p>
-      <iframe src="https://www.google.com/maps?q=Iglesia+San+Nicol%C3%A1s+de+Bari,+Burgos&output=embed" allowfullscreen
-        loading="lazy"></iframe>
+      <iframe src="https://www.google.com/maps?q=Iglesia+San+Nicol%C3%A1s+de+Bari,+Burgos&output=embed"
+        title="Mapa de ubicación de la Iglesia San Nicolás de Bari" allowfullscreen loading="lazy"></iframe>
     </section>
 
     <section class="seccion reveal">
@@ -56,7 +64,7 @@
       <p>Tiene plazas limitadas de parking y un 10% de descuento para huéspedes.</p>
       <div>
         <a href="https://www.google.com/maps?q=Calle+Fern%C3%A1n+Gonz%C3%A1lez,+72,+09003+Burgos" target="_blank"
-          class="boton">
+          class="boton" aria-label="Ver ubicación del Hotel Abba en Google Maps">
           <i class="fas fa-map-marker-alt"></i> Ver ubicación
         </a>
         <a href="https://www.abbahoteles.com/es/destinos/abba-burgos-hotel/hotel.html" target="_blank" class="boton">
@@ -108,7 +116,7 @@
           <i class="fas fa-copy"></i> Copiar
         </button>
       </div>
-      <span id="copiadoMensaje" class="copiado-mensaje">¡IBAN Copiado!</span>
+      <span id="copiadoMensaje" class.copiado-mensaje">¡IBAN Copiado!</span>
     </section>
 
     <section class="seccion reveal">
@@ -121,45 +129,42 @@
       </div>
       <h3><em>👰‍♀️ ¡OS ESPERAMOS! 🤵‍♂️</em></h3>
     </section>
+
     <section id="aparcamiento" class="seccion reveal">
       <h2>🚗 Aparcamiento</h2>
-     <p>Si vienes en coche, estas son algunas opciones cercanas  (pincha 📌 para ver ubicación):</p>
-      <ul>
-
-       <a href="https://www.google.com/maps?q=Museo+de+la+Evoluci%C3%B3n+Humana+(MEH),+72,+09002+Burgos" target="_blank">
-        
-          <span class="map-icon">
-            <li>🏛️ <strong>Parking Evolución Humana</strong> – 12,60€/día 📌</li>
-          </span>
-        </a>
-        <a href="https://www.google.com/maps?q=Pl.+Vega,+09002+Burgos" target="_blank">
-          <span class="map-icon">
-            <li>🅿️ <strong>Parking Plaza Vega</strong> – 9,95€/día · 5 min a pie 📌</li>
-          </span>
-        </a>
-        <a href="https://www.google.com/maps?q=Blvr.+Ferroviario,+2,+09001+Burgos"
-          target="_blank"><span class="map-icon">
-            <li>🚂 <strong>Antigua Estación</strong> – Gratuito · 10-15 min a pie📌</li>
-          </span>
-        </a>
-        <a href="https://www.google.com/maps?q=Plaza+de+Sta.+Teresa,+09002+Burgos" target="_blank">
-          <span class="map-icon">
-            <li>🕍<strong>Santa Teresa</strong> – Zona azul · Gratis domingos 📌 </li>
-          </span>
-        </a>
-
-        <a href="https://www.google.com/maps?q=C.+del+Molino,+09007+Burgos" target="_blank">
-        <span class="map-icon">
-          <li>🆓 <strong>Zonas blanca</strong>: C/ Molinillo (15 min a pie)📌</li>
-        </span>
-        </a>
-
-        <a href="https://www.google.com/maps?q=Av.+Cantabria,+Burgos/@42.3411,-3.6888" target="_blank"><span
-            class="map-icon">
-            <li>🆓 <strong>Zonas blanca</strong>: Av. Cantabria (20-30 min a pie) 📌</li>
-          </span>
-        </a>
-        
+      <p>Si vienes en coche, estas son algunas opciones cercanas (pincha <span class="map-pin-icon-text">📌</span> para ver ubicación):</p>
+      <!-- Lista de aparcamiento con semántica HTML corregida -->
+      <ul aria-label="Opciones de aparcamiento">
+        <li>
+          <a href="https://www.google.com/maps?q=Museo+de+la+Evoluci%C3%B3n+Humana+(MEH),+72,+09002+Burgos" target="_blank" rel="noopener noreferrer">
+            <span class="map-icon" role="img" aria-label="icono museo">🏛️</span> <strong>Parking Evolución Humana</strong> – 12,60€/día <span class="map-pin-icon">📌</span>
+          </a>
+        </li>
+        <li>
+          <a href="https://www.google.com/maps?q=Pl.+Vega,+09002+Burgos" target="_blank" rel="noopener noreferrer">
+            <span class="map-icon" role="img" aria-label="icono parking">🅿️</span> <strong>Parking Plaza Vega</strong> – 9,95€/día · 5 min a pie <span class="map-pin-icon">📌</span>
+          </a>
+        </li>
+        <li>
+          <a href="https://www.google.com/maps?q=Blvr.+Ferroviario,+2,+09001+Burgos" target="_blank" rel="noopener noreferrer">
+            <span class="map-icon" role="img" aria-label="icono tren">🚂</span> <strong>Antigua Estación</strong> – Gratuito · 10-15 min a pie <span class="map-pin-icon">📌</span>
+          </a>
+        </li>
+        <li>
+          <a href="https://www.google.com/maps?q=Plaza+de+Sta.+Teresa,+09002+Burgos" target="_blank" rel="noopener noreferrer">
+            <span class="map-icon" role="img" aria-label="icono iglesia">🕍</span><strong>Santa Teresa</strong> – Zona azul · Gratis domingos <span class="map-pin-icon">📌</span>
+          </a>
+        </li>
+        <li>
+          <a href="https://www.google.com/maps?q=C.+del+Molino,+09007+Burgos" target="_blank" rel="noopener noreferrer">
+            <span class="map-icon" role="img" aria-label="icono gratis">🆓</span> <strong>Zonas blanca</strong>: C/ Molinillo (15 min a pie) <span class="map-pin-icon">📌</span>
+          </a>
+        </li>
+        <li>
+          <a href="https://www.google.com/maps?q=Av.+Cantabria,+Burgos/@42.3411,-3.6888" target="_blank" rel="noopener noreferrer">
+            <span class="map-icon" role="img" aria-label="icono gratis">🆓</span> <strong>Zonas blanca</strong>: Av. Cantabria (20-30 min a pie) <span class="map-pin-icon">📌</span>
+          </a>
+        </li>
       </ul>
     </section>
 
@@ -167,7 +172,5 @@
 
   <script src="script.js"></script>
 
-
 </body>
-
 </html>

@@ -232,15 +232,10 @@ main.visible-content {
   opacity: 0;
   transform: translateY(20px);
   transition: opacity 1s ease, transform 1s ease;
-  background-image: url('images/fondo.png'); /* Fallback */
-  /* Uso de image-set para WebP con fallback. Asegúrate de tener 'fondo.webp'. */
-  /* background-image: image-set(
-    url("images/fondo.webp") type("image/webp"),
-    url("images/fondo.png") type("image/png")
-  ); */
-  background-size: cover; /* Ajusta la imagen para cubrir toda la sección */
+ background-image: url('images/fondo.png');
+  background-size: 100%auto;; /* Ajusta la imagen para cubrir toda la sección */
   background-repeat: no-repeat;
-  background-position: center center; /* Centra la imagen */
+  background-position: center bottom; /* Centra la imagen */
   background-color: var(--color-background); /* Color de fondo si la imagen no carga o es transparente */
 }
 
@@ -540,4 +535,3 @@ main::-webkit-scrollbar-thumb {
 main::-webkit-scrollbar-thumb:hover {
   background-color: var(--color-text-dark);
 }
-

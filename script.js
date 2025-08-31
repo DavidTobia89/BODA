@@ -181,8 +181,9 @@ document.addEventListener("DOMContentLoaded", () => {
         const seccion = flecha.closest('section');
         const siguiente = seccion.nextElementSibling;
         if (siguiente) {
-          siguiente.scrollIntoView({ behavior: 'smooth' });
+          siguiente.scrollIntoView({ behavior: 'smooth', block: 'start'  });
         }
       });
     });
 }); // Fin de DOMContentLoaded
+

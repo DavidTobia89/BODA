@@ -176,6 +176,13 @@ document.addEventListener("DOMContentLoaded", () => {
   } else {
     window.addEventListener('scroll', handleScroll, { passive: true }); // Fallback
   }
-
+document.querySelectorAll('.scroll-icon').forEach(flecha => {
+      flecha.addEventListener('click', () => {
+        const seccion = flecha.closest('section');
+        const siguiente = seccion.nextElementSibling;
+        if (siguiente) {
+          siguiente.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    });
 }); // Fin de DOMContentLoaded
-

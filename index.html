@@ -22,6 +22,7 @@
 
   <!-- Tu hoja de estilos -->
   <link rel="stylesheet" href="style.css" />
+  <!-- Flecha (ya incluida arriba con FA) -->
 </head>
 
 <body>
@@ -48,7 +49,7 @@
       <p class="fecha">12:00 hrs - 27 / 06 / 26 </p>
       <p>Iglesia San Nicolás de Bari, Burgos</p>
       <!-- Flecha animada -->
-      <i class="fa-solid fa-arrow-down scroll-icon"></i>
+      <i class="fa-solid fa-arrow-down scroll-icon" aria-hidden="true"></i>
     </section>
 
     <section class="seccion reveal">
@@ -56,7 +57,7 @@
       <p>El lugar de la ceremonia será la <strong>Iglesia San Nicolás de Bari</strong> en Burgos a las 12:00 h.</p>
       <iframe src="https://www.google.com/maps?q=Iglesia+San+Nicol%C3%A1s+de+Bari,+Burgos&output=embed"
         title="Mapa de ubicación de la Iglesia San Nicolás de Bari" allowfullscreen loading="lazy"></iframe>
-      <i class="fa-solid fa-arrow-down scroll-icon"></i>
+      <i class="fa-solid fa-arrow-down scroll-icon" aria-hidden="true"></i>
     </section>
 
     <section class="seccion reveal">
@@ -72,7 +73,7 @@
           <i class="fas fa-hotel"></i> Página del hotel
         </a>
       </div>
-      <i class="fa-solid fa-arrow-down scroll-icon"></i>
+      <i class="fa-solid fa-arrow-down scroll-icon" aria-hidden="true"></i>
     </section>
 
     <section class="seccion reveal">
@@ -82,7 +83,7 @@
         target="_blank">
         <i class="fas fa-check-circle"></i> Confirmar asistencia
       </a>
-      <i class="fa-solid fa-arrow-down scroll-icon"></i>
+      <i class="fa-solid fa-arrow-down scroll-icon" aria-hidden="true"></i>
     </section>
 
     <section class="seccion reveal">
@@ -92,7 +93,7 @@
         Santa Teresa (al lado del Museo de la Evolución).</p>
       <p>Si te has quedado con hambre, date una vuelta por la calle de los Herreros y pídete un “cojonudo” o una
         “cojonuda”.</p>
-      <i class="fa-solid fa-arrow-down scroll-icon"></i>
+      <i class="fa-solid fa-arrow-down scroll-icon" aria-hidden="true"></i>
     </section>
 
     <section class="seccion reveal">
@@ -109,7 +110,7 @@
           <i class="fab fa-whatsapp"></i> MÓNICA
         </a>
       </div>
-      <i class="fa-solid fa-arrow-down scroll-icon"></i>
+      <i class="fa-solid fa-arrow-down scroll-icon" aria-hidden="true"></i>
     </section>
 
     <section class="seccion reveal">
@@ -123,7 +124,7 @@
         </button>
       </div>
       <span id="copiadoMensaje" class="copiado-mensaje" aria-live="polite">¡IBAN Copiado!</span>
-      <i class="fa-solid fa-arrow-down scroll-icon"></i>
+      <i class="fa-solid fa-arrow-down scroll-icon" aria-hidden="true"></i>
     </section>
 
     <section class="seccion reveal">
@@ -135,12 +136,13 @@
         <div class="circle"><span id="seconds">00</span><small>Seg</small></div>
       </div>
       <h3><em>👰‍♀️ ¡OS ESPERAMOS! 🤵‍♂️</em></h3>
-      <i class="fa-solid fa-arrow-down scroll-icon"></i>
+      <i class="fa-solid fa-arrow-down scroll-icon" aria-hidden="true"></i>
     </section>
 
     <section id="aparcamiento" class="seccion reveal">
       <h2>🚗 Aparcamiento</h2>
       <p>Si vienes en coche, estas son algunas opciones cercanas (pincha <span class="map-pin-icon-text">📌</span> para ver ubicación):</p>
+      <!-- Lista de aparcamiento con semántica HTML corregida -->
       <ul aria-label="Opciones de aparcamiento">
         <li>
           <a href="https://www.google.com/maps?q=Museo+de+la+Evoluci%C3%B3n+Humana+(MEH),+72,+09002+Burgos" target="_blank" rel="noopener noreferrer">
@@ -173,13 +175,81 @@
           </a>
         </li>
       </ul>
+      <!-- Última sección: la flecha de esta sección se ocultará por JS -->
+      <i class="fa-solid fa-arrow-down scroll-icon" aria-hidden="true"></i>
     </section>
 
   </main>
 
   <script src="script.js"></script>
 
- 
+  <!-- Script robusto para scroll suave de flechas (compatible con móviles) -->
+  <script>
+    (function () {
+      // Animación personalizada para evitar bugs de navegadores con smooth nativo
+      function smoothScrollTo(targetY, duration) {
+        const startY = window.pageYOffset;
+        const distance = targetY - startY;
+        const startTime = performance.now();
+        const dur = Math.max(200, duration || 600); // mínimo 200ms
+
+        function easeInOutQuad(t) {
+          return t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
+        }
+
+        function step(now) {
+          const elapsed = now - startTime;
+          const progress = Math.min(1, elapsed / dur);
+          const eased = easeInOutQuad(progress);
+          window.scrollTo(0, Math.round(startY + distance * eased));
+          if (progress < 1) requestAnimationFrame(step);
+        }
+        requestAnimationFrame(step);
+      }
+
+      // Delegación de eventos: captura clicks en cualquier .scroll-icon
+      document.addEventListener('click', function (e) {
+        const flecha = e.target.closest('.scroll-icon');
+        if (!flecha) return;
+
+        e.preventDefault();
+
+        // Evita interferencias de CSS 'scroll-behavior: smooth'
+        const prevBehavior = document.documentElement.style.scrollBehavior;
+        document.documentElement.style.scrollBehavior = 'auto';
+
+        const seccion = flecha.closest('section');
+
+        // Localiza la siguiente SECTION real, saltando nodos no elementales si los hubiera
+        let siguiente = seccion ? seccion.nextElementSibling : null;
+        while (siguiente && siguiente.tagName !== 'SECTION') {
+          siguiente = siguiente.nextElementSibling;
+        }
+
+        if (siguiente) {
+          const rect = siguiente.getBoundingClientRect();
+          const targetY = Math.round(window.pageYOffset + rect.top);
+          smoothScrollTo(targetY, 600);
+        }
+
+        // Restaura el comportamiento previo
+        if (prevBehavior) {
+          // Defer para no afectar a la animación actual
+          setTimeout(() => {
+            document.documentElement.style.scrollBehavior = prevBehavior;
+          }, 700);
+        }
+      }, { passive: false });
+
+      // Oculta la flecha de la última sección para evitar clics sin destino
+      const secciones = document.querySelectorAll('main .seccion');
+      if (secciones.length) {
+        const ultima = secciones[secciones.length - 1];
+        const ultimaFlecha = ultima.querySelector('.scroll-icon');
+        if (ultimaFlecha) ultimaFlecha.style.display = 'none';
+      }
+    })();
+  </script>
 
 </body>
 </html>

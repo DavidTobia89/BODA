@@ -4,7 +4,6 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="format-detection" content="telephone=no">
   <title>Boda de David y Mónica</title>
 
   <!-- Fuentes -->
@@ -17,61 +16,80 @@
   <!-- Íconos -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-  <!-- Favicon -->
-  <link rel="icon" href="images/favicon.png" type="image/png">
+  <style>
+    body {
+      margin: 0;
+      font-family: Lato, sans-serif;
+    }
 
-  <!-- Estilos -->
-  <link rel="stylesheet" href="style.css" />
+    .pantalla {
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+
+    .seccion {
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      scroll-snap-align: start;
+    }
+
+    .scroll-icon {
+      font-size: 2rem;
+      margin-top: 20px;
+      cursor: pointer;
+    }
+  </style>
 </head>
 
 <body>
 
+  <!-- Pantalla inicial -->
   <div id="pantalla-inicial" class="pantalla">
-    <div class="cta-text">Haz clic en el sobre para abrir tu invitación ✉️</div>
-    <picture>
-      <source srcset="images/sobre.webp" type="image/webp">
-      <img id="sobre" class="sobre" src="images/sobre.jpeg" alt="Sobre de invitación" tabindex="0" role="button"
-        aria-label="Abrir invitación" />
-    </picture>
+    <h1>Pantalla del sobre</h1>
+    <i class="fa-solid fa-arrow-down scroll-icon"></i>
   </div>
 
+  <!-- Contenido principal -->
   <main id="contenido-principal">
     <section class="seccion">
-      <h1 class="nombres">David & Mónica </h1>
-      <h2 class="titulo">¡Nos casamos!</h2>
-      <p class="fecha">12:00 hrs - 27 / 06 / 26 </p>
-      <p>Iglesia San Nicolás de Bari, Burgos</p>
-      <!-- Flecha -->
+      <h2>Sección 1</h2>
       <i class="fa-solid fa-arrow-down scroll-icon"></i>
     </section>
 
     <section class="seccion">
-      <h2>Ceremonia</h2>
-      <p>Será en la <strong>Iglesia San Nicolás de Bari</strong>, Burgos.</p>
+      <h2>Sección 2</h2>
+      <i class="fa-solid fa-arrow-down scroll-icon"></i>
     </section>
 
     <section class="seccion">
-      <h2>Banquete</h2>
-      <p>En el <strong>Hotel Abba</strong>, Burgos.</p>
-    </section>
-
-    <section class="seccion">
-      <h2>Contacto</h2>
-      <p>Estamos preparando este día con mucho cariño.</p>
+      <h2>Sección 3</h2>
+      <i class="fa-solid fa-arrow-down scroll-icon"></i>
     </section>
   </main>
 
   <script>
     document.querySelectorAll('.scroll-icon').forEach(flecha => {
       flecha.addEventListener('click', () => {
-        const seccion = flecha.closest('section');
-        const siguiente = seccion.nextElementSibling;
-        if (siguiente) {
-          const offsetTop = siguiente.offsetTop;
+        const seccion = flecha.closest('section') || flecha.closest('#pantalla-inicial');
+        let siguiente;
 
-          // Forzar un único scroll exacto
+        if (seccion.id === 'pantalla-inicial') {
+          // si estamos en la pantalla inicial → ir a la primera sección
+          siguiente = document.querySelector('#contenido-principal .seccion');
+        } else {
+          // si estamos en una sección → ir a la siguiente
+          siguiente = seccion.nextElementSibling;
+        }
+
+        if (siguiente) {
           window.scrollTo({
-            top: offsetTop,
+            top: siguiente.offsetTop,
             behavior: 'smooth'
           });
         }
